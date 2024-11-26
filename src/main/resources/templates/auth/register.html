@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Job Portal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .signup-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+
+        .signup-card {
+            width: 100%;
+            max-width: 500px;
+            padding: 30px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .footer {
+            background-color: #343a40;
+            color: #fff;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .address-block{
+            border: 1px solid #ced4da;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .address-block {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Signup Section -->
+<section class="signup-container">
+    <div class="signup-card">
+        <h3 class="text-center mb-4">Sign Up for Job Portal</h3>
+        <div th:if="${param.success}">
+            <div class="alert alert-info">You've successfully registered
+                to our awesome app!</div>
+        </div>
+        <div th:if="${param.fail}">
+            <div class="alert alert-info">You've unsuccessfully registered
+                to our awesome app!</div>
+        </div>
+        <!-- Signup Form -->
+        <form action="/register" method="post">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" class="form-control" id="name" placeholder="Name" name="name" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="dob">Date of birth:</label>
+                    <input type="date" class="form-control" id="dob" placeholder="Date of birth" name="dob" required>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6 form-group">
+                    <label for="email">Email:</label>
+                    <input type="text" class="form-control" id="email" placeholder="Email" name="email" required>
+                </div>
+                <div class="col-md-6 form-group">
+                    <label for="password">Password:</label>
+                    <input type="text" class="form-control" id="password" placeholder="Password" name="password" required>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6 form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="text" class="form-control" id="phone" placeholder="Phone Number" name="phone" required>
+                </div>
+                <div class="col-md-6 form-group city">
+                    <label for="city">City:</label>
+                    <input type="text" class="form-control" id="city" placeholder="City" name="city" required>
+                </div>
+            </div>
+
+            <!-- Address Section -->
+            <div class="address-block">
+                <h5 class="mb-3">Address Details</h5>
+                <div class="row">
+                    <div class="col-md-6 form-group">
+                        <label for="country">Country Code:</label>
+                        <input type="text" class="form-control" id="country" placeholder="Country Code" name="country" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="number">Number:</label>
+                        <input type="text" class="form-control" id="number" placeholder="Number" name="number" required>
+                    </div>
+                </div>
+
+                <div class="row mt-3">
+                    <div class="col-md-6 form-group">
+                        <label for="street">Street:</label>
+                        <input type="text" class="form-control" id="street" placeholder="Street" name="street" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="zipcode">Zipcode:</label>
+                        <input type="text" class="form-control" id="zipcode" placeholder="Zip code" name="zipcode" required>
+                    </div>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary form-control mt-4">Submit</button>
+        </form>
+        <div class="mt-3 text-center">
+            <p>Already have an account? <a href="/login">Login here</a></p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container">
+        <p>&copy; 2024 Job Portal. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

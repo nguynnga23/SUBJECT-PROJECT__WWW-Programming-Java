@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Profile Clone</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+            background-color: #f9f9fc;
+            margin-left: 250px;
+            padding: 20px;
+            width: calc(100% - 250px);
+        }
+
+        .profile-header {
+            background-color: #0073b1;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+        .profile-photo{
+            margin-top: 20px;
+        }
+        .profile-photo img {
+
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-top: -75px;
+        }
+
+        .profile-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            /*margin-top: 5px;*/
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills span {
+            background-color: #0073b1;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        .action-buttons {
+            float: right;
+        }
+    </style>
+</head>
+<body class="bg-light">
+<div class="wrapper">
+    <div class="sidebar" th:replace="~{common/sidebar-candidate.html}"></div>
+    <div class="content">
+        <!-- Header -->
+        <header class="bg-light py-3 border-bottom">
+            <div class="container d-flex justify-content-between align-items-center">
+                <h1 class="h4">Dashboard</h1>
+                <a href="/candidates/home" class="btn btn-outline-primary">Back to homepage</a>
+            </div>
+        </header>
+        <div sec:authorize="isAuthenticated()" class="container">
+            <!-- Profile Info -->
+            <div class="text-center mt-4 profile-container">
+                <!-- Profile Photo -->
+                <div class="text-center profile-photo">
+                    <img th:src="@{/image/avt.jpg}" alt="Profile Photo">
+                </div>
+                <h2>
+                    <span sec:authentication="principal.candidate.fullName">Nguyễn Nga</span>
+                    <button class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#candidateModal">
+                        Edit
+                    </button>
+                </h2>
+                <p  class="text-muted">
+                    <span sec:authentication="principal.candidate.address.city">Hanoi</span>
+                    <span sec:authentication="principal.candidate.address.country">, Vietnam</span>
+                </p>
+                <p>Email: <a href="mailto:nga.nguyen@example.com" sec:authentication="principal.username">nga.nguyen@example.com</a></p>
+                <p >Phone: <span sec:authentication="principal.candidate.phone">+84 123 456 789</span></p>
+            </div>
+
+            <!-- About Me Section -->
+            <div class="mt-4 profile-container">
+                <h4>About Me</h4>
+                <p>I am a passionate Backend Developer with expertise in Java and Spring Boot. I have experience working
+                    on
+                    cloud-based solutions and building scalable web applications.</p>
+            </div>
+
+            <!-- Experience Section -->
+            <div class="mt-4 profile-container">
+                <h4>
+                    Experience
+                    <div class="action-buttons">
+                        <button class="btn btn-sm btn-outline-primary" data-toggle="modal"
+                                data-target="#experienceModal">
+                            Add
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" data-toggle="modal"
+                                data-target="#experienceModal">
+                            Edit
+                        </button>
+                    </div>
+                </h4>
+                <div class="border-bottom pb-3 mb-3">
+                    <h5>Backend Developer at Tech Company</h5>
+                    <small class="text-muted">Jan 2023 - Present</small>
+                    <p>Developed microservices using Spring Boot, integrated with cloud platforms, and improved system
+                        performance.</p>
+                </div>
+                <div>
+                    <h5>Software Engineer Intern at Software Firm</h5>
+                    <small class="text-muted">Jun 2022 - Dec 2022</small>
+                    <p>Worked on data-driven projects, implemented RESTful APIs, and participated in Agile development
+                        practices.</p>
+                </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="mt-4 profile-container">
+                <h4>
+                    Skills
+                    <div class="action-buttons">
+                        <button class="btn btn-sm btn-outline-primary" data-toggle="modal" data-target="#skillsModal">
+                            Add
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#skillsModal">
+                            Edit
+                        </button>
+                    </div>
+                </h4>
+                <div class="skills">
+                    <span>Java</span>
+                    <span>Spring Boot</span>
+                    <span>Cloud Functions</span>
+                    <span>RESTful APIs</span>
+                    <span>SQL</span>
+                </div>
+            </div>
+
+            <!-- Contact Information Section -->
+            <div class="mt-4 profile-container">
+                <h4>Contact Information</h4>
+                <ul class="list-unstyled">
+                    <li>Email: <a href="mailto:nga.nguyen@example.com">nga.nguyen@example.com</a></li>
+                    <li>LinkedIn: <a href="https://linkedin.com/in/nga-nguyen"
+                                     target="_blank">linkedin.com/in/nga-nguyen</a>
+                    </li>
+                    <li>GitHub: <a href="https://github.com/nguyennaga" target="_blank">github.com/nguyennaga</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Profile -->
+<div class="modal fade" id="candidateModal" tabindex="-1" aria-labelledby="candidateModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="candidateModalLabel">Edit Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/candidates/add-candidate" method="post">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">Date of birth:</label>
+                        <input type="date" class="form-control" id="dob" placeholder="Date of birth" name="dob"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" class="form-control" id="email" placeholder="Email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Phone Number" name="phone"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="text" class="form-control" id="city" placeholder="City" name="city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country Code:</label>
+                        <input type="text" class="form-control" id="country" placeholder="Country Code" name="country"
+                               required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="number">Number: </label>
+                        <input type="text" class="form-control" id="number" placeholder="Number" name="number" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="street">Street: </label>
+                        <input type="text" class="form-control" id="street" placeholder="Street" name="street" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="zipcode">Zipcode: </label>
+                        <input type="text" class="form-control" id="zipcode" placeholder="Zip code" name="zipcode"
+                               required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary form-control">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal for Experience -->
+<div class="modal fade" id="experienceModal" tabindex="-1" aria-labelledby="experienceModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="experienceModalLabel">Add Experience</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="company">Company name:</label>
+                        <input type="text" class="form-control" id="company" placeholder="Enter company name"
+                               name="company" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role:</label>
+                        <input type="text" class="form-control" id="role" placeholder="Enter role" name="role" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">To date:</label>
+                        <input type="date" class="form-control" id="toDate" placeholder="To date" name="toDate"
+                               required>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="dob">From date:</label>
+                        <input type="date" class="form-control" id="fromDate" placeholder="From date" name="fromDate"
+                               required>
+                    </div>
+                    <div class="form-group">
+                        <label for="workDescription">Email:</label>
+                        <input type="text" class="form-control" id="workDescription"
+                               placeholder="Enter work description" name="workDescription" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-control">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for Skills -->
+<div class="modal fade" id="skillsModal" tabindex="-1" aria-labelledby="skillsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="skillsModalLabel">Add Skills</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="skillName">Skill Name</label>
+                        <input type="text" class="form-control" id="skillName" name="skillName" placeholder="Enter skill name">
+                    </div>
+                    <div class="form-group">
+                        <label for="skillDescription">Skill Description</label>
+                        <input type="text" class="form-control" id="skillDescription" name="skillDescription"
+                               placeholder="Enter skill description">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skillType">Skill Type</label>
+                        <select class="form-control" id="skillType" name="skillType">
+                            <option value="">Select skill type</option>
+                            <!-- Sử dụng th:each để lặp qua các giá trị enum -->
+                            <option th:each="skillType : ${skillTypes}"
+                                    th:value="${skillType}"
+                                    th:text="${skillType}"></option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skillType">Skill Level</label>
+                        <select class="form-control" id="skillLevel" name="skillLevel">
+                            <option value="">Select skill level</option>
+                            <!-- Sử dụng th:each để lặp qua các giá trị enum -->
+                            <option th:each="skillLevel : ${skillLevels}"
+                                    th:value="${skillLevel}"
+                                    th:text="${skillLevel}"></option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="moreInfo">More information</label>
+                        <input type="text" class="form-control" id="moreInfo" name="moreInfo"
+                               placeholder="Enter more information">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and dependencies -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

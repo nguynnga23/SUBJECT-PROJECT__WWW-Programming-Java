@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage - Job Platform</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- Header -->
+<div th:replace="~{common/header-candidate.html}"></div>
+<!-- Hero Section -->
+<section class="hero bg-primary text-white text-center py-5">
+    <div class="container">
+        <h1 class="display-4">Find Your Dream Job</h1>
+        <p class="lead">Find the best job opportunities based on your skills and interests. With our smart job matching system, we help you connect with the right companies.</p>
+        <a href="/jobs/job-suggestion" class="btn btn-light btn-lg">Browse Jobs</a>
+        <a href="#candidates" class="btn btn-light btn-lg">Find Companies</a>
+    </div>
+</section>
+<!-- Featured Jobs Section -->
+<section id="jobs" class="container py-5">
+    <h2 class="text-center">Featured Jobs</h2>
+    <div class="row">
+        <div class="col-md-4 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Software Engineer</h5>
+                    <p class="card-text">Skills: Java, Spring Boot, SQL</p>
+                    <a href="#" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-2" >
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Data Scientist</h5>
+                    <p class="card-text">Skills: Python, Data Analysis</p>
+                    <a href="#" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">UX/UI Designer</h5>
+                    <p class="card-text">Skills: Figma, Adobe XD, Design Systems</p>
+                    <a href="#" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">UX/UI Designer</h5>
+                    <p class="card-text">Skills: Figma, Adobe XD, Design Systems</p>
+                    <a href="#" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-2" >
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">UX/UI Designer</h5>
+                    <p class="card-text">Skills: Figma, Adobe XD, Design Systems</p>
+                    <a href="#" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 mt-2">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">UX/UI Designer</h5>
+                    <p class="card-text">Skills: Figma, Adobe XD, Design Systems</p>
+                    <a href="#" class="btn btn-primary">Apply Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Footer -->
+<div th:replace="~{common/footer.html}"></div>
+
+<!-- Login Modal -->
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="loginModalLabel">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/login" method="post">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" name="password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Login</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

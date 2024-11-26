@@ -20,7 +20,15 @@ public class CompanyController {
     public String showHomePage(Model model) {
         return "companies/homepage-company";
     }
-    @GetMapping("/list")
+    @GetMapping("/profile")
+    public String showProfileCompanyPage(Model model) {
+        return "companies/profile-company";
+    }
+    @GetMapping("/dashboard-company")
+    public String showDashboardCompanyPage(Model model) {
+        return "companies/dashboard-company";
+    }
+    @GetMapping("/job-management")
     public String showCompanies(Model model) {
         model.addAttribute("companies", companyService.findAll());
         return "companies/job-management";

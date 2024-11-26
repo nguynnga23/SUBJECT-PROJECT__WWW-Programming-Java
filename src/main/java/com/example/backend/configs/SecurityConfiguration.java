@@ -36,7 +36,7 @@ public class SecurityConfiguration {
                 .formLogin(form -> form
                         .loginPage("/login") //Chỉ định URL của trang đăng nhập và cho phép tất cả người dùng truy cập trang này.
                         .permitAll()
-                        .defaultSuccessUrl("/candidates/profile", true)
+                        .defaultSuccessUrl("/companies/profile", true)
                 )
                 .logout(logout -> logout
                         .logoutUrl("/logout")

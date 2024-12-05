@@ -13,11 +13,13 @@
             display: flex;
             min-height: 100vh;
         }
+
         .sidebar {
             width: 250px;
             height: 100vh;
             position: fixed;
         }
+
         .content {
             flex: 1;
             padding: 20px;
@@ -33,9 +35,11 @@
             padding: 30px 0;
             text-align: center;
         }
-        .profile-photo{
+
+        .profile-photo {
             margin-top: 20px;
         }
+
         .profile-photo img {
 
             width: 150px;
@@ -61,6 +65,10 @@
             margin: 5px;
             display: inline-block;
         }
+        .skills div{
+            display: inline;  /* Các div sẽ hiển thị trên cùng một dòng */
+            margin-right: 5px; /* Khoảng cách giữa các kỹ năng */
+        }
 
         .action-buttons {
             float: right;
@@ -74,7 +82,7 @@
         <!-- Header -->
         <header class="bg-light py-3 border-bottom">
             <div class="container d-flex justify-content-between align-items-center">
-                <h1 class="h4">Dashboard</h1>
+                <h1 class="h4">Profile</h1>
                 <a href="/candidates/home" class="btn btn-outline-primary">Back to homepage</a>
             </div>
         </header>
@@ -86,17 +94,19 @@
                     <img th:src="@{/image/avt.jpg}" alt="Profile Photo">
                 </div>
                 <h2>
-                    <span sec:authentication="principal.candidate.fullName">Nguyễn Nga</span>
+                    <span th:text="${candidate.fullName}">Nguyễn Nga</span>
                     <button class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#candidateModal">
                         Edit
                     </button>
                 </h2>
-                <p  class="text-muted">
-                    <span sec:authentication="principal.candidate.address.city">Hanoi</span>
-                    <span sec:authentication="principal.candidate.address.country">, Vietnam</span>
+                <p class="text-muted">
+                    <span th:text="${candidate.address.city}">Hanoi</span>
+                    ,
+                    <span th:text="${candidate.address.country}">Vietnam</span>
                 </p>
-                <p>Email: <a href="mailto:nga.nguyen@example.com" sec:authentication="principal.username">nga.nguyen@example.com</a></p>
-                <p >Phone: <span sec:authentication="principal.candidate.phone">+84 123 456 789</span></p>
+                <p>Email: <a href="mailto:nga.nguyen@example.com" th:text="${candidate.email}">nga.nguyen@example.com</a>
+                </p>
+                <p>Phone: <span th:text="${candidate.phone}">+84 123 456 789</span></p>
             </div>
 
             <!-- About Me Section -->
@@ -122,17 +132,19 @@
                         </button>
                     </div>
                 </h4>
-                <div class="border-bottom pb-3 mb-3">
-                    <h5>Backend Developer at Tech Company</h5>
-                    <small class="text-muted">Jan 2023 - Present</small>
-                    <p>Developed microservices using Spring Boot, integrated with cloud platforms, and improved system
+                <div th:each="experience : ${experiences}" class="border-bottom pb-3 mb-3">
+                    <h5>
+                        <span th:text="${experience.role}">No role</span>
+                        at
+                        <span th:text="${experience.companyName}">No company</span>
+                    </h5>
+                    <small class="text-muted">
+                        <span th:text="${experience.fromDate}">Jan 2023</span>
+                        -
+                        <span th:text="${experience.toDate}">Present</span>
+                    </small>
+                    <p th:text="${experience.workDescription}">Developed microservices using Spring Boot, integrated with cloud platforms, and improved system
                         performance.</p>
-                </div>
-                <div>
-                    <h5>Software Engineer Intern at Software Firm</h5>
-                    <small class="text-muted">Jun 2022 - Dec 2022</small>
-                    <p>Worked on data-driven projects, implemented RESTful APIs, and participated in Agile development
-                        practices.</p>
                 </div>
             </div>
 
@@ -150,11 +162,9 @@
                     </div>
                 </h4>
                 <div class="skills">
-                    <span>Java</span>
-                    <span>Spring Boot</span>
-                    <span>Cloud Functions</span>
-                    <span>RESTful APIs</span>
-                    <span>SQL</span>
+                    <div th:each="candidateSkill : ${candidateSkills}">
+                        <span th:text="${candidateSkill.skill.skillName}"></span>
+                    </div>
                 </div>
             </div>
 
@@ -184,54 +194,60 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/candidates/add-candidate" method="post">
+                <form action="/candidates/edit-profile">
                     <div class="form-group">
                         <label for="name">Name:</label>
-                        <input type="text" class="form-control" id="name" placeholder="Name" name="name" required>
+                        <input type="text" class="form-control" id="name" placeholder="Name" name="name"
+                               th:value="${candidate.fullName}" required>
                     </div>
                     <div class="form-group">
                         <label for="dob">Date of birth:</label>
                         <input type="date" class="form-control" id="dob" placeholder="Date of birth" name="dob"
-                               required>
+                               th:value="${candidate.dob}" required>
                     </div>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="text" class="form-control" id="email" placeholder="Email" name="email" required>
+                        <input type="email" class="form-control" id="email" placeholder="Email" name="email"
+                               th:value="${candidate.email}" required>
                     </div>
                     <div class="form-group">
                         <label for="phone">Phone Number:</label>
                         <input type="text" class="form-control" id="phone" placeholder="Phone Number" name="phone"
-                               required>
+                               th:value="${candidate.phone}" required>
                     </div>
 
                     <div class="form-group">
                         <label for="city">City:</label>
-                        <input type="text" class="form-control" id="city" placeholder="City" name="city" required>
+                        <input type="text" class="form-control" id="city" placeholder="City" name="city"
+                               th:value="${candidate.address.city}" required>
                     </div>
                     <div class="form-group">
                         <label for="country">Country Code:</label>
                         <input type="text" class="form-control" id="country" placeholder="Country Code" name="country"
-                               required>
+                               th:value="${candidate.address.country}" required>
                     </div>
 
                     <div class="form-group">
                         <label for="number">Number: </label>
-                        <input type="text" class="form-control" id="number" placeholder="Number" name="number" required>
+                        <input type="text" class="form-control" id="number" placeholder="Number" name="number"
+                               th:value="${candidate.address.number}" required>
                     </div>
 
                     <div class="form-group">
                         <label for="street">Street: </label>
-                        <input type="text" class="form-control" id="street" placeholder="Street" name="street" required>
+                        <input type="text" class="form-control" id="street" placeholder="Street" name="street"
+                               th:value="${candidate.address.street}" required>
                     </div>
 
                     <div class="form-group">
                         <label for="zipcode">Zipcode: </label>
                         <input type="text" class="form-control" id="zipcode" placeholder="Zip code" name="zipcode"
-                               required>
+                               th:value="${candidate.address.zipcode}" required>
                     </div>
 
                     <button type="submit" class="btn btn-primary form-control">Submit</button>
                 </form>
+
             </div>
         </div>
     </div>
@@ -247,7 +263,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="/candidates/experiences/add">
                     <div class="form-group">
                         <label for="company">Company name:</label>
                         <input type="text" class="form-control" id="company" placeholder="Enter company name"
@@ -257,6 +273,13 @@
                         <label for="role">Role:</label>
                         <input type="text" class="form-control" id="role" placeholder="Enter role" name="role" required>
                     </div>
+
+                    <div class="form-group">
+                        <label for="dob">From date:</label>
+                        <input type="date" class="form-control" id="fromDate" placeholder="From date" name="fromDate"
+                               required>
+                    </div>
+
                     <div class="form-group">
                         <label for="dob">To date:</label>
                         <input type="date" class="form-control" id="toDate" placeholder="To date" name="toDate"
@@ -264,12 +287,7 @@
 
                     </div>
                     <div class="form-group">
-                        <label for="dob">From date:</label>
-                        <input type="date" class="form-control" id="fromDate" placeholder="From date" name="fromDate"
-                               required>
-                    </div>
-                    <div class="form-group">
-                        <label for="workDescription">Email:</label>
+                        <label for="workDescription">Work Description:</label>
                         <input type="text" class="form-control" id="workDescription"
                                placeholder="Enter work description" name="workDescription" required>
                     </div>
@@ -291,17 +309,17 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form action="/candidates/add-skill">
                     <div class="form-group">
                         <label for="skillName">Skill Name</label>
-                        <input type="text" class="form-control" id="skillName" name="skillName" placeholder="Enter skill name">
+                        <input type="text" class="form-control" id="skillName" name="skillName"
+                               placeholder="Enter skill name">
                     </div>
                     <div class="form-group">
                         <label for="skillDescription">Skill Description</label>
                         <input type="text" class="form-control" id="skillDescription" name="skillDescription"
                                placeholder="Enter skill description">
                     </div>
-
                     <div class="form-group">
                         <label for="skillType">Skill Type</label>
                         <select class="form-control" id="skillType" name="skillType">

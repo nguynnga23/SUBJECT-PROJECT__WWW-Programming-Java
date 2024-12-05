@@ -26,7 +26,6 @@ public class Experience {
 
     private String companyName;
     @Column(name = "role")
-
     private String role;
     @Column(name = "work_desc")
 

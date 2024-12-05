@@ -75,6 +75,8 @@
         .card {
             border: 1px solid #ddd;
             transition: box-shadow 0.3s ease;
+            height: 200px;
+            max-height: 300px;
         }
 
         .card:hover {
@@ -154,69 +156,14 @@
                         </div>
                     </div>
                     <div class="row g-4">
-                        <div class="col-md-4">
+                        <div th:each="company : ${companies}"class="col-md-4">
                             <div class="card p-3">
-                                <h5>Stripe</h5>
-                                <p class="text-muted">Stripe is a software platform for starting and running internet
+                                <h5 th:text="${company.compName}">Stripe</h5>
+                                <p th:text="${company.about}" class="text-muted">Stripe is a software platform for starting and running internet
                                     businesses...</p>
                                 <div>
                                     <span class="badge bg-primary">Business</span>
                                     <span class="badge bg-secondary">Payment Gateway</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="
-card p-3">
-                                <h5>Truebill</h5>
-                                <p class="text-muted">Take control of your money. Truebill develops a mobile app that
-                                    helps...</p>
-                                <div>
-                                    <span class="badge bg-primary">Business</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card p-3">
-                                <h5>Square</h5>
-                                <p class="text-muted">Square builds common business tools in unconventional ways so
-                                    more...</p>
-                                <div>
-                                    <span class="badge bg-primary">Business</span>
-                                    <span class="badge bg-secondary">Blockchain</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card p-3">
-                                <h5>Coinbase</h5>
-                                <p class="text-muted">Coinbase is a digital currency wallet and platform where merchants
-                                    and...</p>
-                                <div>
-                                    <span class="badge bg-primary">Business</span>
-                                    <span class="badge bg-secondary">Blockchain</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card p-3">
-                                <h5>Robinhood</h5>
-                                <p class="text-muted">Robinhood is lowering barriers, removing fees, and providing
-                                    greater
-                                    access...</p>
-                                <div>
-                                    <span class="badge bg-primary">Business</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card p-3">
-                                <h5>Kraken</h5>
-                                <p class="text-muted">Based in San Francisco, Kraken is the world’s largest global
-                                    bitcoin...</p>
-                                <div>
-                                    <span class="badge bg-primary">Business</span>
-                                    <span class="badge bg-secondary">Blockchain</span>
                                 </div>
                             </div>
                         </div>

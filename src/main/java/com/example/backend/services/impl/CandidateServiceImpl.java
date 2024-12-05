@@ -11,6 +11,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 public class CandidateServiceImpl implements CandidateService {
     @Autowired
@@ -21,6 +23,16 @@ public class CandidateServiceImpl implements CandidateService {
         Sort sort = Sort.by(Sort.Direction.fromString(sortDirection), sortBy);
         Pageable pageable = PageRequest.of(pageNo, pageSize, sort);
         return candidateRepository.findAll(pageable);
+    }
+
+    @Override
+    public Optional<Candidate> findCandidateById(Long id) {
+        return candidateRepository.findById(id);
+    }
+
+    @Override
+    public Optional<Candidate> findCandidateByEmail(String email) {
+        return candidateRepository.findByEmail(email);
     }
 
     @Override

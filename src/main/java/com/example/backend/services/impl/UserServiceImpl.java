@@ -13,6 +13,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 import java.util.Collection;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
@@ -20,8 +21,25 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
     @Override
-    public User save(User user) {
-        return userRepository.save(user);
+    public void save(User user) {
+         userRepository.save(user);
+    }
+
+    @Override
+    public void update(User user, Long id) {
+        if(userRepository.findById(id).isPresent()) {
+            userRepository.save(user);
+        }
+    }
+
+    @Override
+    public void delete(Long id) {
+        userRepository.deleteById(id);
+    }
+
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
     }
 
     @Override

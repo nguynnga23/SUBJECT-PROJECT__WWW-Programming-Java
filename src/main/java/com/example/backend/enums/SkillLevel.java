@@ -12,4 +12,13 @@ public enum SkillLevel {
     public String toString() {
         return skillLevel;
     }
+    // Phương thức tĩnh để chuyển đổi chuỗi thành enum
+    public static SkillLevel fromString(String skillLevel) {
+        for (SkillLevel type : SkillLevel.values()) {
+            if (type.skillLevel.equalsIgnoreCase(skillLevel.trim())) { // Loại bỏ khoảng trắng và so sánh không phân biệt hoa thường
+                return type;
+            }
+        }
+        throw new IllegalArgumentException("Unknown enum level " + skillLevel);
+    }
 }

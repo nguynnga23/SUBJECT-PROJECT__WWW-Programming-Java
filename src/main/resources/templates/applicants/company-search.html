@@ -25,7 +25,6 @@
             padding: 20px;
             background-color: #f9f9fc;
             margin-left: 250px;
-            padding: 20px;
             width: calc(100% - 250px);
         }
 
@@ -39,10 +38,6 @@
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
-        }
-
-        .card-body {
-            padding: 20px;
         }
 
         .filter-group h5 {
@@ -156,7 +151,7 @@
                         </div>
                     </div>
                     <div class="row g-4">
-                        <div th:each="company : ${companies}"class="col-md-4">
+                        <div th:each="company : ${companies}" class="col-md-4">
                             <div class="card p-3">
                                 <h5 th:text="${company.compName}">Stripe</h5>
                                 <p th:text="${company.about}" class="text-muted">Stripe is a software platform for starting and running internet

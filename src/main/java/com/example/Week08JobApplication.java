@@ -1,14 +1,9 @@
 package com.example;
 
-import com.example.backend.enums.SkillLevel;
-import com.example.backend.enums.SkillType;
-import com.example.backend.models.*;
 import com.example.backend.repositories.*;
 import com.example.backend.services.AddressService;
 import com.example.backend.services.CandidateService;
 import com.example.backend.services.UserService;
-import com.neovisionaries.i18n.CountryCode;
-import net.datafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,12 +11,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import java.security.Principal;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Optional;
-import java.util.Random;
-import java.util.Set;
 
 @SpringBootApplication
 public class Week08JobApplication {

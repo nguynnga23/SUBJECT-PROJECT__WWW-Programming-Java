@@ -8,7 +8,6 @@ import com.example.backend.services.*;
 import com.neovisionaries.i18n.CountryCode;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -35,7 +34,6 @@ public class CandidateController {
     private final ExperienceService experienceService;
     private final CompanyService companyService;
 
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     public CandidateController(CandidateRepository candidateRepository, CandidateService candidateService, AddressService addressService, UserService userService, SkillService skillService, CandidateSkillService candidateSkillService, ExperienceService experienceService, CompanyService companyService) {

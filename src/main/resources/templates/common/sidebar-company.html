@@ -1,45 +1,93 @@
-<div class="sidebar bg-light border-right" xmlns:sec="http://www.w3.org/1999/xhtml">
-    <div class="logo text-center py-4">
+<!--<html lang="en" >-->
+<head xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <style>
+        /* Custom sidebar styles */
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            position: fixed;
+            /*background: linear-gradient(135deg, #f8f9fa, #e9ecef);*/
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .sidebar ul.nav {
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .sidebar ul.nav li.nav-item {
+            margin: 10px 0;
+        }
+
+        .sidebar ul.nav li a.nav-link {
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+            color: #6c757d;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .sidebar ul.nav li a.nav-link:hover,
+        .sidebar ul.nav li a.nav-link:focus,
+        .sidebar ul.nav li a.nav-link.active {
+            background-color: #007bff;
+            color: white;
+        }
+
+        .sidebar ul.nav li a.nav-link i {
+            margin-right: 10px;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<div class="sidebar">
+    <div class="logo text-center py-3 mt-2">
         <a href="/companies/home">
-            <h2 class="font-weight-bold text-primary">JobHuntly</h2>
+            <h3 class="font-weight-bold">AspireHub</h3>
         </a>
     </div>
     <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link text-dark font-weight-medium" href="/companies/dashboard-company">
+            <a class="nav-link  font-weight-medium" href="/companies/dashboard-company">
                 <i class="bi bi-house-door mr-2"></i>Dashboard
             </a>
         </li>
-<!--        <li class="nav-item">-->
-<!--            <a class="nav-link text-dark font-weight-medium" href="#">-->
-<!--                <i class="bi bi-chat-left-dots mr-2"></i>Messages-->
-<!--            </a>-->
-<!--        </li>-->
         <li class="nav-item">
-            <a class="nav-link text-dark font-weight-medium" href="/companies/profile">
+            <a class="nav-link font-weight-medium" href="/companies/profile">
                 <i class="bi bi-file-earmark-text mr-2"></i>Company Profile
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link text-dark font-weight-medium" href="/companies/job-management">
+            <a class="nav-link" href="/companies/job-management">
                 <i class="bi bi-search mr-2"></i>Job Listing
             </a>
         </li>
 
         <li class="nav-item">
-            <a class="nav-link text-dark font-weight-medium" href="#">
+            <a class="nav-link" href="#">
                 <i class="bi bi-gear mr-2"></i>Settings
             </a>
         </li>
-<!--        <li class="nav-item">-->
-<!--            <a class="nav-link text-dark font-weight-medium" href="#">-->
-<!--                <i class="bi bi-question-circle mr-2"></i>Help Center-->
-<!--            </a>-->
-<!--        </li>-->
+
         <li sec:authorize="isAuthenticated()" class="nav-item">
-            <form th:action="@{/logout}" method="post">
-                <button class="btn btn-primary w-100" type="submit">Logout</button>
+            <form th:action="@{/logout}" method="post" id="logoutForm" style="display: none;">
+                <!-- Đây là form ẩn để thực hiện yêu cầu POST -->
             </form>
+            <a href="#" class="nav-link" onclick="document.getElementById('logoutForm').submit();">
+                <i class="bi bi-box-arrow-right"></i>
+                Logout
+            </a>
         </li>
     </ul>
 </div>
+</body>
+<!--</html>-->

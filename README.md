@@ -46,6 +46,9 @@ All roles have access to an overall chart ğŸ“ˆ and can review replied emails ğŸ“
 Here are some screenshots from the project
 
 ## Client Side
+### Home Page
+![image](https://github.com/user-attachments/assets/bf7eda9e-c835-4604-b544-9235adc938f4)
+
 ### Register Page
 ![image](https://github.com/user-attachments/assets/a997ed78-93b2-46b8-a64a-7eb715f4889c)
 ![image](https://github.com/user-attachments/assets/0401a1fc-df00-45db-81b3-f7fa2cc59535)

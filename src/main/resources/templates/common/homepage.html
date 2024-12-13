@@ -6,6 +6,15 @@
     <title>Homepage - Job Platform</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .profile-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            /*margin-top: 5px;*/
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
 
@@ -15,16 +24,34 @@
 <section class="hero bg-primary text-white text-center py-5">
     <div class="container">
         <h1 class="display-4">Find Your Dream Job</h1>
-        <p class="lead">Find the best job opportunities based on your skills and interests. With our smart job matching system, we help you connect with the right companies.</p>
-        <a href="/jobs/job-suggestion" class="btn btn-light btn-lg">Browse Jobs</a>
-        <a href="#candidates" class="btn btn-light btn-lg">Find Companies</a>
+        <p class="lead">Connecting talented candidates with top companies. Whether you're looking for your next job or
+            hiring the best talent, we're here to help.</p>
+        <a href="#jobs" class="btn btn-light btn-lg">Browse Jobs</a>
+        <a href="#candidates" class="btn btn-light btn-lg">Find Candidates</a>
     </div>
 </section>
-<!-- Featured Jobs Section -->
-<section id="jobs" class="container py-5">
-    <h2 class="text-center">Featured Jobs</h2>
+
+<!-- About Section -->
+<section id="about" class="container py-5">
     <div class="row">
-        <div class="col-md-4 mt-2">
+        <div class="col-md-6 border-right">
+            <h2>For Candidates</h2>
+            <p>Find the best job opportunities based on your skills and interests. With our smart job matching system,
+                we help you connect with the right companies.</p>
+        </div>
+        <div class="col-md-6 border-left">
+            <h2>For Companies</h2>
+            <p>Post your job openings and find the best candidates with the skills you need. Attract top talent to help
+                grow your company.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Jobs Section -->
+<section id="jobs" class="container py-4 profile-container mt-4 ">
+    <h3 class="text-center mb-2">Featured Jobs</h3>
+    <div class="row">
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Software Engineer</h5>
@@ -33,7 +60,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mt-2" >
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Data Scientist</h5>
@@ -42,49 +69,58 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4 mt-2">
+        <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">UX/UI Designer</h5>
-                    <p class="card-text">Skills: Figma, Adobe XD, Design Systems</p>
-                    <a href="#" class="btn btn-primary">Apply Now</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mt-2">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">UX/UI Designer</h5>
-                    <p class="card-text">Skills: Figma, Adobe XD, Design Systems</p>
-                    <a href="#" class="btn btn-primary">Apply Now</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mt-2" >
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">UX/UI Designer</h5>
-                    <p class="card-text">Skills: Figma, Adobe XD, Design Systems</p>
-                    <a href="#" class="btn btn-primary">Apply Now</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mt-2">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">UX/UI Designer</h5>
-                    <p class="card-text">Skills: Figma, Adobe XD, Design Systems</p>
+                    <p class="card-text">Skills: Figma, Adobe XD</p>
                     <a href="#" class="btn btn-primary">Apply Now</a>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
+<!-- Featured Candidates Section -->
+<section id="candidates" class="container py-4 profile-container mt-4 mb-4">
+    <h3 class="text-center mb-2">Featured Candidates</h3>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">John Doe</h5>
+                    <p class="card-text">Skills: Java, Spring Boot, SQL</p>
+                    <a href="#" class="btn btn-primary">View Profile</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Jane Smith</h5>
+                    <p class="card-text">Skills: Python, Data Analysis</p>
+                    <a href="#" class="btn btn-primary">View Profile</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Mark Johnson</h5>
+                    <p class="card-text">Skills: Figma, Adobe XD</p>
+                    <a href="#" class="btn btn-primary">View Profile</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Footer -->
 <div th:replace="~{common/footer.html}"></div>
 
 <!-- Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+<div class="modal fade" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel"
+     aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -97,15 +133,18 @@
                 <form th:action="@{/login}" method="post">
                     <div th:if="${param.error}">
                         <div class="alert alert-danger">Invalid username or
-                            password.</div>
+                            password.
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="email" name="username" placeholder="Enter your email" required>
+                        <input type="email" class="form-control" id="email" name="username"
+                               placeholder="Enter your email" required>
                     </div>
                     <div class="mb-3">
                         <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                        <input type="password" class="form-control" id="password" name="password"
+                               placeholder="Enter your password" required>
                     </div>
                     <div class="mb-3 d-flex justify-content-between">
                         <div>

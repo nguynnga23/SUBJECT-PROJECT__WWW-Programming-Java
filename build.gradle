@@ -36,6 +36,10 @@ dependencies {
     implementation 'com.neovisionaries:nv-i18n:1.29'
     // https://mvnrepository.com/artifact/net.datafaker/datafaker
     implementation 'net.datafaker:datafaker:2.4.1'
+// https://mvnrepository.com/artifact/org.apache.mahout/mahout-math
+    implementation 'org.apache.mahout:mahout-math:0.13.0'
+
+
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
     annotationProcessor 'org.projectlombok:lombok'

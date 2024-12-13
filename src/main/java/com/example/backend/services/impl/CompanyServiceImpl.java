@@ -50,6 +50,11 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
+    public Optional<Company> findById(Long id) {
+        return companyRepository.findById(id);
+    }
+
+    @Override
     public Page<Company> fillALlCompanies(int pageNo, int pageSize, String sortBy, String sortDirection) {
         Sort sort = Sort.by(Sort.Direction.fromString(sortDirection), sortBy);
         Pageable pageable = PageRequest.of(pageNo, pageSize, sort);

@@ -1,9 +1,8 @@
 package com.example;
 
+import com.example.backend.enums.SkillLevel;
 import com.example.backend.enums.SkillType;
-import com.example.backend.models.Company;
-import com.example.backend.models.Job;
-import com.example.backend.models.Skill;
+import com.example.backend.models.*;
 import com.example.backend.repositories.*;
 import com.example.backend.services.*;
 import net.datafaker.Faker;
@@ -13,6 +12,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import java.util.*;
 
 
 @SpringBootApplication
@@ -45,6 +46,7 @@ public class Week08JobApplication {
     private final JobSkillService jobSkillService;
 
     private BCryptPasswordEncoder passwordEncoder;
+
     @Bean
     CommandLineRunner init(CompanyRepository companyRepository, SkillRepository skillRepository) {
         return args -> {
@@ -147,4 +149,5 @@ public class Week08JobApplication {
 //            }
         };
     }
-}
+
+};

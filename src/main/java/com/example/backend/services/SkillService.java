@@ -9,4 +9,5 @@ public interface SkillService {
     void delete(Long id);
     void update(Skill skill, Long id);
     List<Skill> findAll();
+    Skill findById(Long id);
 }

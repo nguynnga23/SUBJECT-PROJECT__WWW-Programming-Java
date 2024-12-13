@@ -114,7 +114,9 @@ public class CandidateController {
     }
 
     @GetMapping("/company-detail")
-    public String showCompanyDetailPage(Model model) {
+    public String showCompanyDetailPage(@RequestParam("id") Long id, Model model) {
+        Company company = companyService.findById(id).get();
+        model.addAttribute("company", company);
         model.addAttribute("showBreadCrumb", true);
         return "applicants/company-search";
     }

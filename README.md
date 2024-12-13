@@ -3,7 +3,6 @@
 ### Front End
 - [Thymeleaf](https://www.thymeleaf.org/) 🍃
 - [Bootstrap](https://getbootstrap.com/) 🅱️
-- [jQuery](https://jquery.com/) 📊
 - [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) 🌐
 - [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) 🎨
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) 🚀
@@ -11,17 +10,16 @@
 ### Back End
 - [Java](https://www.java.com/) ☕
 - [Spring](https://spring.io/) 🌱
-- [spring-data-jpa-datatables](https://github.com/darrachequesne/spring-data-jpa-datatables) 📊
 - [JUnit](https://junit.org/) 🧪
 
 ### Database
-- [MySQL](https://www.mysql.com/) 🗃️
+- [MariaDB](https://mariadb.org/) 🗃️
 
 ### Project Details 🚀
 
-This project, spanning over a duration of 2 months ⏳, involved the collaborative effort of our award-winning team 🏆. The team utilized a diverse set of tools, including Java ☕, MySQL 🗃️, Spring 🌱, Thymeleaf 🍃, Bootstrap 🅱️, jQuery 📊, HTML 🌐, CSS 🎨, JavaScript 🚀, and JUnit 🧪.
+This project, spanning over a duration of 2 months ⏳, involved the collaborative effort of our award-winning team 🏆. The team utilized a diverse set of tools, including Java ☕, MariaDB 🗃️, Spring 🌱, Thymeleaf 🍃, Bootstrap 🅱️, HTML 🌐, CSS 🎨, JavaScript 🚀, and JUnit 🧪.
 
-The development process encompassed both front-end and back-end technologies. Front-end technologies such as Thymeleaf, Bootstrap, jQuery, HTML, CSS, and JavaScript were employed to create a visually appealing and interactive user interface. On the back end, the team utilized Java, MySQL, Spring, and the Spring Data JPA DataTables library for efficient data handling.
+The development process encompassed both front-end and back-end technologies. Front-end technologies such as Thymeleaf, Bootstrap, HTML, CSS, and JavaScript were employed to create a visually appealing and interactive user interface. On the back end, the team utilized Java, MySQL, Spring, and the Spring Data JPA DataTables library for efficient data handling.
 
 Additionally, the project incorporated robust testing practices with the implementation of JUnit to ensure the reliability and quality of the codebase.
 

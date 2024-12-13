@@ -28,61 +28,15 @@ Additionally, the project incorporated robust testing practices with the impleme
 This collaborative effort and the use of a comprehensive set of tools allowed us to successfully deliver a feature-rich and reliable solution within the stipulated time frame.
 
 ## Project Overview 🚀
-
-The project consists of two main components: the **client side** and the **admin side**.
+The project consists of two main components: the **Candidate side** and the **Company side**.
 
 ### Client Side 🌐
-
-Clients can:
-
 - View lists of vacancies 📋
 - Filter vacancies by position, date, and more 🔍
 - Submit CVs through the respective vacancy 📄
+### Candidate Side 👨‍💼👩‍💼
 
-### Admin Side 👨‍💼👩‍💼
-
-There are six roles on the admin side:
-
-1. **Default Admin 🌐**
-2. **Admin 🖥️**
-3. **Senior HR 👨‍💻**
-4. **Junior HR 👩‍💻**
-5. **Department Head 🤵**
-6. **Interviewer 👩‍💼**
-
-#### Junior HR 👩‍💼
-
-Junior HR responsibilities include:
-
-- Adding and editing positions for vacancies 📝
-- Creating interviews 📅
-- Downloading CVs and generating reports 📊
-- Filtering data by date, position, vacancy, and various statuses 🔢
-
-#### Senior HR 👨‍💻
-
-Senior HR can perform all tasks assigned to Junior HR, with additional capabilities such as:
-
-- Deciding candidate statuses (default: received, viewed, considering) 📬
-- Sending interview invitations dynamically based on the interview format (online/offline) 📧
-- Employing candidates and managing recalls for failed or canceled interviews 💼
-
-#### Admin 🖥️
-
-Admin responsibilities encompass everything Senior HR can do, plus:
-
-- Changing the active status of other users (excluding other admins) 🔄
-- Adding and editing departments 🏢
-- Deciding interview statuses (rejected, passed, pending) 📋
-
-#### Default Admin 🌐
-
-Default Admin can execute all tasks within the admin role, with the added permission to change the active status of regular admins.
-
-### Other Roles 🌐
-
-- **Interviewer 🎙️:** Submits candidate reviews
-- **Department Head 🏢:** Alters interview statuses (pending, rejected, passed)
+### Company Side 👨‍💼👩‍💼
 
 All roles have access to an overall chart 📈 and can review replied emails 📧, except for Department Heads and Interviewers.
 
@@ -91,11 +45,18 @@ All roles have access to an overall chart 📈 and can review replied emails �
 
 Here are some screenshots from the project
 
-### Client Side
+## Client Side
+### Home Page
+![image](https://github.com/user-attachments/assets/bf7eda9e-c835-4604-b544-9235adc938f4)
 
+### Register Page
+![image](https://github.com/user-attachments/assets/a997ed78-93b2-46b8-a64a-7eb715f4889c)
+![image](https://github.com/user-attachments/assets/0401a1fc-df00-45db-81b3-f7fa2cc59535)
+![image](https://github.com/user-attachments/assets/e915b777-8c2b-451b-a54e-ffacc2a9d2ef)
+### Login Page
+![image](https://github.com/user-attachments/assets/b7289836-5dc8-41c6-b74f-e7fe88b65dd7)
 ### Home Page 🏠
 ![Home Page](/docs/client/home_page.jpg)
-
 Explore our Home Page for a welcoming and informative experience. Discover everything you need at a glance.
 
 ### All Jobs List 👥
@@ -114,57 +75,35 @@ Dive into the details of each vacancy with Vacancy Detail. Get a closer look at 
 Ready to take the next step in your career? Use the Job Apply Form to submit your application seamlessly.
 
 
-### Admin Side
-
+## Candidate Side 👨‍💼👩‍💼
 ### Dashboard Overview 📊
-![Dashboard Overview](/docs/admin/dashboard_overview.jpg)
+![image](https://github.com/user-attachments/assets/3a2abf69-2dc0-40d4-ab68-dd29bfa77159)
 
 Get a quick snapshot of your system with our Dashboard Overview. Track essential metrics and key performance indicators at a glance.
 
-### Dashboard Charts 📈
-![Dashboard Charts](/docs/admin/dashboard_charts.jpg)
-
+### Find Jobs 📈
+![image](https://github.com/user-attachments/assets/06992d6c-fe9b-4e59-ac07-07248055e4e4)
 Dive deeper into data visualization with our interactive Dashboard Charts. Gain insights and make informed decisions effortlessly.
 
-### All Candidate List 👥
-![All Candidate List](/docs/admin/all_candidate_list.jpg)
-
+### All Companies List 👥
+![image](https://github.com/user-attachments/assets/7ef86abb-9c19-4445-a31e-f6841ab44326)
+#### View Company Profile
+![image](https://github.com/user-attachments/assets/b59dae7f-9889-4e32-9491-01bbd8fdaac9)
 Manage your talent pool efficiently with the All Candidate List. Access and organize candidate information effortlessly.
 
-### All Interview Candidate List 👤
-![All Interview Candidate List](/docs/admin/all_interview_candidate_list.jpg)
+### Candidate Profile
+![image](https://github.com/user-attachments/assets/672c1093-8dd2-4167-9eb4-23a5b18df756)
+#### Edit Profile
+![image](https://github.com/user-attachments/assets/ba1ee118-d420-46e8-b199-27933e4c98a3)
+#### Add Experience
+![image](https://github.com/user-attachments/assets/78194169-0af2-4d65-bcd0-54ab98109d06)
+#### Add Skill
+![image](https://github.com/user-attachments/assets/dd1f731f-5058-4a53-8ce0-6da4055018d8)
 
-Keep track of interviewees seamlessly with the All Interview Candidate List. Simplify your interview process.
 
-### Interview List 🗓️
-![Interview List](/docs/admin/interview_list.jpg)
 
-Stay on top of your interview schedule with the Interview List. Streamline the interview process for better efficiency.
 
-### Vacancy List 📋
-![Vacancy List](/docs/admin/vacancy_list.jpg)
 
-Stay organized with the Vacancy List. Keep an overview of open positions and recruitment needs.
-
-### Add Vacancy ➕
-![Add Vacancy](/docs/admin/add_vacancy.jpg)
-
-Easily add new vacancies to your system with the user-friendly Add Vacancy feature. Streamline your recruitment process.
-
-### Email Template Form 📧
-![Email Template Form](/docs/admin/email_template_from.jpg)
-
-Personalize your communication with candidates using the Email Template Form. Craft compelling messages effortlessly.
-
-### Customize Email From 📤
-![Customize Email From](/docs/admin/customize_email_form.jpg)
-
-Tailor your emails with the Customize Email From feature. Add a personal touch to your communications.
-
-### Email Draft Modal 📨
-![Email Draft Modal](/docs/admin/email_draft_modal.jpg)
-
-Preview and perfect your emails with the Email Draft Modal. Ensure your messages are polished and professional.
 
 
 ### Wrapping Up 🌟

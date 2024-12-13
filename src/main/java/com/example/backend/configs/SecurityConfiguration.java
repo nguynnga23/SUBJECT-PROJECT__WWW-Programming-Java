@@ -40,8 +40,8 @@ public class SecurityConfiguration {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception { //cấu hình chính cho bảo mật web.
         http
                 .authorizeHttpRequests(authorize -> authorize
-                        .requestMatchers("/js/**", "/css/**", "/img/**").permitAll()
-                        .requestMatchers("/login", "/register").permitAll()
+                        .requestMatchers("/js/**", "/css/**", "/img/**", "/").permitAll()
+                        .requestMatchers("/login", "/register/**").permitAll()
                         .requestMatchers("/candidates/**").hasAuthority(CANDIDATE_ROLE)
                         .requestMatchers("/company/**").hasAuthority(COMPANY_ROLE)
                         .anyRequest().authenticated() // tất cả các yêu cầu khác phải được xác thực
@@ -54,9 +54,9 @@ public class SecurityConfiguration {
                             String role = authentication.getAuthorities().stream()
                                     .map(grantedAuthority -> grantedAuthority.getAuthority()).findFirst().orElse(null);
                             if (role.equals(CANDIDATE_ROLE)) {
-                                response.sendRedirect(request.getContextPath() + "/candidates/profile");
+                                response.sendRedirect(request.getContextPath() + "/candidates/home");
                             }else if (role.equals(COMPANY_ROLE)) {
-                                response.sendRedirect(request.getContextPath() + "/companies/profile");
+                                response.sendRedirect(request.getContextPath() + "/companies/home");
                             }else {
                                 response.sendRedirect(request.getContextPath() + "/login");
                             }
@@ -66,7 +66,7 @@ public class SecurityConfiguration {
                         .logoutUrl("/logout")
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)
-                        .logoutSuccessUrl("/login?logout")
+                        .logoutSuccessUrl("/")
                         .permitAll()
                 );
         return http.build();

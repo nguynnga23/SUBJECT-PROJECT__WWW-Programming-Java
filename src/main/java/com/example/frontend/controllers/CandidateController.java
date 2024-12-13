@@ -33,10 +33,11 @@ public class CandidateController {
     private final CandidateSkillService candidateSkillService;
     private final ExperienceService experienceService;
     private final CompanyService companyService;
+    private final JobService jobService;
 
 
     @Autowired
-    public CandidateController(CandidateRepository candidateRepository, CandidateService candidateService, AddressService addressService, UserService userService, SkillService skillService, CandidateSkillService candidateSkillService, ExperienceService experienceService, CompanyService companyService) {
+    public CandidateController(CandidateRepository candidateRepository, CandidateService candidateService, AddressService addressService, UserService userService, SkillService skillService, CandidateSkillService candidateSkillService, ExperienceService experienceService, CompanyService companyService, JobService jobService) {
         this.candidateRepository = candidateRepository;
         this.candidateService = candidateService;
         this.addressService = addressService;
@@ -45,6 +46,7 @@ public class CandidateController {
         this.candidateSkillService = candidateSkillService;
         this.experienceService = experienceService;
         this.companyService = companyService;
+        this.jobService = jobService;
     }
 
     // Begin show views
@@ -91,14 +93,29 @@ public class CandidateController {
 
     @GetMapping("/job-search")
     public String showFindJobPage(Model model) {
-
+        List<Job> jobs = jobService.getJobs();
+        model.addAttribute("jobs", jobs);
         return "applicants/job-search";
     }
 
     @GetMapping("/company-search")
-    public String showFindCompanyPage(Model model) {
-        List<Company> companies = companyService.findAll();
-        model.addAttribute("companies", companies);
+    public String showFindCompanyPage(Model model, @RequestParam("page") Optional<Integer> page, @RequestParam("size") Optional<Integer> size) {
+        int currentPage = page.orElse(1);
+        int pageSize = size.orElse(6);
+        Page<Company> companyPage = companyService.fillALlCompanies(currentPage - 1, pageSize, "id", "asc");
+        model.addAttribute("showBreadCrumb", false);
+        model.addAttribute("companyPage", companyPage);
+        int totalPages = companyPage.getTotalPages();
+        if(totalPages > 0) {
+            List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages).boxed().collect(Collectors.toList());
+            model.addAttribute("pageNumbers", pageNumbers);
+        }
+        return "applicants/company-search";
+    }
+
+    @GetMapping("/company-detail")
+    public String showCompanyDetailPage(Model model) {
+        model.addAttribute("showBreadCrumb", true);
         return "applicants/company-search";
     }
 

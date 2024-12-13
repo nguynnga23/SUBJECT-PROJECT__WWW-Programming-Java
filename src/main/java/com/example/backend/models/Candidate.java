@@ -57,5 +57,4 @@ public class Candidate {
 
     @OneToMany(mappedBy = "can")
     private Set<Experience> experiences = new LinkedHashSet<>();
-
 }

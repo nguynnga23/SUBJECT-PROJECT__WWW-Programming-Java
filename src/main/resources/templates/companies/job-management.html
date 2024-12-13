@@ -13,7 +13,13 @@
             display: flex;
             min-height: 100vh;
         }
-
+        .profile-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            /*margin-top: 5px;*/
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
         .sidebar {
             width: 250px;
             height: 100vh;
@@ -74,18 +80,6 @@
             color: #343a40;
         }
 
-        .list-group-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border: 1px solid #ddd;
-            padding: 15px;
-        }
-
-        .list-group-item:hover {
-            background-color: #f8f9fa;
-        }
-
         img {
             border: 1px solid #ddd;
             padding: 5px;
@@ -100,16 +94,15 @@
         <!-- Header Section -->
         <header class="bg-light py-3 border-bottom">
             <div class="container d-flex justify-content-between align-items-center">
-                <div>
-                    <h1 class="h5">Company Nomad</h1>
-                </div>
-                <button class="btn btn-primary">+ Post a job</button>
+                <h1 class="h4">Job Listing</h1>
+                <a href="/companies/home" class="btn btn-outline-primary">Back to homepage</a>
             </div>
         </header>
         <div class="flex-grow-1 p-4">
             <header class="d-flex justify-content-between align-items-center mb-4">
-                <h2 class="h5 mb-0">Job Listing</h2>
-                <button class="btn btn-primary">+ Post a job</button>
+                <button class="btn btn-primary" data-toggle="modal"
+                        data-target="#jobModal">+ Post a job
+                </button>
             </header>
             <p>Here is your job listing status from July 19 - July 25.</p>
 
@@ -123,63 +116,20 @@
                     <table class="table align-middle">
                         <thead>
                         <tr>
-                            <th>Roles</th>
-                            <th>Status</th>
-                            <th>Date Posted</th>
-                            <th>Due Date</th>
-                            <th>Job Type</th>
-                            <th>Applicants</th>
-                            <th>Needs</th>
+                            <th>Job name</th>
+                            <th>Job description</th>
+                            <th>Job skills</th>
                             <th></th>
                         </tr>
                         </thead>
-                        <tbody>
+                        <tbody th:each="job : ${jobs}">
                         <tr>
-                            <td>Social Media Assistant</td>
-                            <td><span class="badge bg-success">Live</span></td>
-                            <td>20 May 2020</td>
-                            <td>24 May 2020</td>
-                            <td><span class="badge bg-primary">Fulltime</span></td>
-                            <td>19</td>
-                            <td>4 / 11</td>
+                            <td th:text="${job.jobName}">Social Media Assistant</td>
+                            <td th:text="${job.getJobDesc()}"><span class="badge bg-success">Live</span></td>
+                            <td th:text="${job.jobSkills}">20 May 2020</td>
                             <td>
-                                <button class="btn btn-sm btn-light">...</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Senior Designer</td>
-                            <td><span class="badge bg-success">Live</span></td>
-                            <td>16 May 2020</td>
-                            <td>24 May 2020</td>
-                            <td><span class="badge bg-primary">Fulltime</span></td>
-                            <td>1,234</td>
-                            <td>0 / 20</td>
-                            <td>
-                                <button class="btn btn-sm btn-light">...</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Visual Designer</td>
-                            <td><span class="badge bg-success">Live</span></td>
-                            <td>15 May 2020</td>
-                            <td>24 May 2020</td>
-                            <td><span class="badge bg-warning">Freelance</span></td>
-                            <td>2,435</td>
-                            <td>1 / 5</td>
-                            <td>
-                                <button class="btn btn-sm btn-light">...</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>Data Science</td>
-                            <td><span class="badge bg-danger">Closed</span></td>
-                            <td>13 May 2020</td>
-                            <td>24 May 2020</td>
-                            <td><span class="badge bg-warning">Freelance</span></td>
-                            <td>6,234</td>
-                            <td>10 / 10</td>
-                            <td>
-                                <button class="btn btn-sm btn-light">...</button>
+                                <button class="btn btn-primary" data-toggle="modal"
+                                        data-target="#jobSkillModal">Add Job Skill</button>
                             </td>
                         </tr>
                         </tbody>
@@ -207,6 +157,96 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </div>
 </div>
+</div>
+
+<!-- Modal for Job -->
+<div class="modal fade" id="jobModal" tabindex="-1" aria-labelledby="jobModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="jobModalLabel">Post a job</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/companies/jobs/add">
+                    <div class="form-group">
+                        <label for="jobName">Job name:</label>
+                        <input type="text" class="form-control" id="jobName" placeholder="Enter job name"
+                               name="jobName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="jobDesc">Job description :</label>
+                        <input type="text" class="form-control" id="jobDesc" placeholder="Enter job description"
+                               name="jobDesc" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-control">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal for JobSkill -->
+<div class="modal fade" id="jobSkillModal" tabindex="-1" aria-labelledby="jobSkillModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="jobSkillModalLabel">Add Job Skill</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/candidates/add-skill">
+                    <div class="form-group">
+                        <label for="skillName">Skill Name</label>
+                        <select class="form-control" id="skillName" name="skillName">
+                            <option value="">Select skill type</option>
+                            <!-- Sử dụng th:each để lặp qua các giá trị enum -->
+                            <option th:each="skill : ${skills}"
+                                    th:value="${skill.id}"
+                                    th:text="${skill.skillName}"></option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="skillDescription">Skill Description</label>
+                        <input type="text" class="form-control" id="skillDescription" name="skillDescription"
+                               placeholder="Enter skill description">
+                    </div>
+                    <div class="form-group">
+                        <label for="skillType">Skill Type</label>
+                        <select class="form-control" id="skillType" name="skillType">
+                            <option value="">Select skill type</option>
+                            <!-- Sử dụng th:each để lặp qua các giá trị enum -->
+                            <option th:each="skillType : ${skillTypes}"
+                                    th:value="${skillType}"
+                                    th:text="${skillType}"></option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="skillType">Skill Level</label>
+                        <select class="form-control" id="skillLevel" name="skillLevel">
+                            <option value="">Select skill level</option>
+                            <!-- Sử dụng th:each để lặp qua các giá trị enum -->
+                            <option th:each="skillLevel : ${skillLevels}"
+                                    th:value="${skillLevel}"
+                                    th:text="${skillLevel}"></option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="moreInfo">More information</label>
+                        <input type="text" class="form-control" id="moreInfo" name="moreInfo"
+                               placeholder="Enter more information">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- Bootstrap JS and dependencies -->

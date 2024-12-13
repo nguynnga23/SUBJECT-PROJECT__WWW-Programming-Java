@@ -9,4 +9,5 @@ public interface JobService {
     void deleteJob(Long id);
     void updateJob(Job job, Long id);
     List<Job> getJobs();
+    List<Job> findJobsByCompany_Id(String compId);
 }

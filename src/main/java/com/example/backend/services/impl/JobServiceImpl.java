@@ -33,4 +33,9 @@ public class JobServiceImpl implements JobService {
     public List<Job> getJobs() {
         return jobRepository.findAll();
     }
+
+    @Override
+    public List<Job> findJobsByCompany_Id(String compId) {
+        return List.of();
+    }
 }

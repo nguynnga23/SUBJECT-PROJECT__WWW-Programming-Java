@@ -88,7 +88,7 @@
         </header>
         <div sec:authorize="isAuthenticated()" class="container">
             <!-- Profile Info -->
-            <div class="text-center mt-4 profile-container">
+            <section class="text-center mt-4 profile-container">
                 <!-- Profile Photo -->
                 <div class="text-center profile-photo">
                     <img th:src="@{/image/avt.jpg}" alt="Profile Photo">
@@ -107,18 +107,18 @@
                 <p>Email: <a href="mailto:nga.nguyen@example.com" th:text="${candidate.email}">nga.nguyen@example.com</a>
                 </p>
                 <p>Phone: <span th:text="${candidate.phone}">+84 123 456 789</span></p>
-            </div>
+            </section>
 
             <!-- About Me Section -->
-            <div class="mt-4 profile-container">
+            <section class="mt-4 profile-container">
                 <h4>About Me</h4>
                 <p>I am a passionate Backend Developer with expertise in Java and Spring Boot. I have experience working
                     on
                     cloud-based solutions and building scalable web applications.</p>
-            </div>
+            </section>
 
             <!-- Experience Section -->
-            <div class="mt-4 profile-container">
+            <section class="mt-4 profile-container">
                 <h4>
                     Experience
                     <div class="action-buttons">
@@ -146,10 +146,10 @@
                     <p th:text="${experience.workDescription}">Developed microservices using Spring Boot, integrated with cloud platforms, and improved system
                         performance.</p>
                 </div>
-            </div>
+            </section>
 
             <!-- Skills Section -->
-            <div class="mt-4 profile-container">
+            <section class="mt-4 profile-container">
                 <h4>
                     Skills
                     <div class="action-buttons">
@@ -166,10 +166,10 @@
                         <span th:text="${candidateSkill.skill.skillName}"></span>
                     </div>
                 </div>
-            </div>
+            </section>
 
             <!-- Contact Information Section -->
-            <div class="mt-4 profile-container">
+            <section class="mt-4 profile-container">
                 <h4>Contact Information</h4>
                 <ul class="list-unstyled">
                     <li>Email: <a href="mailto:nga.nguyen@example.com">nga.nguyen@example.com</a></li>
@@ -178,7 +178,7 @@
                     </li>
                     <li>GitHub: <a href="https://github.com/nguyennaga" target="_blank">github.com/nguyennaga</a></li>
                 </ul>
-            </div>
+            </section>
         </div>
     </div>
 </div>

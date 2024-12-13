@@ -1,9 +1,12 @@
 package com.example;
 
+import com.example.backend.enums.SkillType;
+import com.example.backend.models.Company;
+import com.example.backend.models.Job;
+import com.example.backend.models.Skill;
 import com.example.backend.repositories.*;
-import com.example.backend.services.AddressService;
-import com.example.backend.services.CandidateService;
-import com.example.backend.services.UserService;
+import com.example.backend.services.*;
+import net.datafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,32 +17,36 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @SpringBootApplication
 public class Week08JobApplication {
+    @Autowired
+    public Week08JobApplication(CandidateService candidateService, AddressService addressService, UserService userService, SkillService skillService, CandidateSkillService candidateSkillService, CompanyService companyService, RoleService roleService, JobService jobService, JobSkillService jobSkillService) {
+        this.candidateService = candidateService;
+        this.addressService = addressService;
+        this.userService = userService;
+        this.skillService = skillService;
+        this.candidateSkillService = candidateSkillService;
+        this.companyService = companyService;
+        this.roleService = roleService;
+        this.jobService = jobService;
+        this.jobSkillService = jobSkillService;
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(Week08JobApplication.class, args);
     }
 
-    @Autowired
-    private CandidateService candidateService;
-    @Autowired
-    private CandidateRepository candidateRepository;
-    @Autowired
-    private AddressService addressService;
-    @Autowired
-    private AddressRepository addressRepository;
-    @Autowired
-    private UserService userRepository;
-    @Autowired
-    private SkillRepository skillRepository;
-    @Autowired
-    private CandidateSkillRepository candidateSkillRepository;
-    @Autowired
-    private CompanyRepository companyRepository;
-    @Autowired
-    private RoleRepository roleRepository;
+    private final CandidateService candidateService;
+    private final AddressService addressService;
+    private final UserService userService;
+    private final SkillService skillService;
+    private final CandidateSkillService candidateSkillService;
+    private final CompanyService companyService;
+    private final RoleService roleService;
+    private final JobService jobService;
+    private final JobSkillService jobSkillService;
 
     private BCryptPasswordEncoder passwordEncoder;
     @Bean
-    CommandLineRunner init(CompanyRepository companyRepository) {
+    CommandLineRunner init(CompanyRepository companyRepository, SkillRepository skillRepository) {
         return args -> {
 //            Random rand = new Random();
 //            for (int i = 1; i <= 1; i++) {
@@ -130,6 +137,14 @@ public class Week08JobApplication {
 //                }
 //           }
 //
+//            Faker faker = new Faker();
+//            for (Company company : companyService.findAll()) {
+//                Job job = new Job();
+//                job.setCompany(company);
+//                job.setJobDesc(faker.job().field());
+//                job.setJobName(faker.job().position());
+//                jobService.saveJob(job);
+//            }
         };
     }
 }

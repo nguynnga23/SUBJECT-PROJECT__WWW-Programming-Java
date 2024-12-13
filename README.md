@@ -76,6 +76,9 @@ Ready to take the next step in your career? Use the Job Apply Form to submit you
 
 
 ## Candidate Side 👨‍💼👩‍💼
+### Home Page
+![image](https://github.com/user-attachments/assets/4dc9f5e3-7d64-4e1d-a6f6-7ec3d969ee10)
+
 ### Dashboard Overview 📊
 ![image](https://github.com/user-attachments/assets/3a2abf69-2dc0-40d4-ab68-dd29bfa77159)
 
@@ -86,13 +89,15 @@ Get a quick snapshot of your system with our Dashboard Overview. Track essential
 Dive deeper into data visualization with our interactive Dashboard Charts. Gain insights and make informed decisions effortlessly.
 
 ### All Companies List 👥
-![image](https://github.com/user-attachments/assets/7ef86abb-9c19-4445-a31e-f6841ab44326)
+![image](https://github.com/user-attachments/assets/133e3da9-b8b2-47f5-9d1c-9233250baa5f)
+
 #### View Company Profile
-![image](https://github.com/user-attachments/assets/b59dae7f-9889-4e32-9491-01bbd8fdaac9)
+![image](https://github.com/user-attachments/assets/8fb133fd-eff4-479c-a6b9-dc33d22a801b)
+
 Manage your talent pool efficiently with the All Candidate List. Access and organize candidate information effortlessly.
 
 ### Candidate Profile
-![image](https://github.com/user-attachments/assets/672c1093-8dd2-4167-9eb4-23a5b18df756)
+![image](https://github.com/user-attachments/assets/a9aca6c6-fb25-42c4-bd9a-8ff300d5757f)
 #### Edit Profile
 ![image](https://github.com/user-attachments/assets/ba1ee118-d420-46e8-b199-27933e4c98a3)
 #### Add Experience
@@ -100,10 +105,15 @@ Manage your talent pool efficiently with the All Candidate List. Access and orga
 #### Add Skill
 ![image](https://github.com/user-attachments/assets/dd1f731f-5058-4a53-8ce0-6da4055018d8)
 
+## Company Side
+### Company Profile
+![image](https://github.com/user-attachments/assets/4c8a0745-cc9c-4506-84b3-5147b5451603)
+#### Edit company profile
+![image](https://github.com/user-attachments/assets/bdc8554e-7a27-4ef4-93f4-7bca332cef29)
 
-
-
-
+### Job Listing
+#### Post a Job
+![image](https://github.com/user-attachments/assets/a6eb4194-8c4f-460e-a5b4-cf04d0cbfe81)
 
 
 ### Wrapping Up 🌟

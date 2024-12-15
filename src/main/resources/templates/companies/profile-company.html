@@ -11,12 +11,12 @@
     <style>
         .wrapper {
             display: flex;
-            min-height: 100vh;
+            height: 100vh;
         }
 
         .sidebar {
             width: 250px;
-            height: 100vh;
+            height: 100%;
             position: fixed;
         }
 
@@ -25,8 +25,8 @@
             padding: 20px;
             background-color: #f9f9fc;
             margin-left: 250px;
-            padding: 20px;
             width: calc(100% - 250px);
+            overflow-y: auto;
         }
 
         .profile-header {
@@ -69,6 +69,7 @@
         .action-buttons {
             float: right;
         }
+
         h5 {
             color: #343a40;
         }
@@ -90,6 +91,13 @@
             padding: 5px;
         }
 
+        .profile-container {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            /*margin-top: 5px;*/
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
     </style>
 </head>
 <body class="bg-light">
@@ -106,123 +114,135 @@
         <!-- Subheader Section -->
         <header class="bg-light py-4 border-bottom">
             <div class="container d-flex justify-content-between align-items-center">
-                <div class="d-flex align-items-center">
-                    <img src="https://via.placeholder.com/50" alt="Logo" class="me-3">
-                    <div>
-                        <h1 class="h4 mb-0">Nomad</h1>
-                        <a href="#" class="text-primary">https://nomad.com</a>
-                    </div>
-                </div>
-                <div>
-                    <button class="btn btn-outline-primary">Public View</button>
-                    <button class="btn btn-primary">Profile Settings</button>
-                </div>
+                <button class="btn btn-sm btn-outline-secondary" data-toggle="modal" data-target="#companyModal">
+                    Edit
+                </button>
             </div>
         </header>
-
-        <!-- Company Info Section -->
-        <section class="container py-5 border-bottom">
-            <div class="row">
-                <div class="col-md-8">
-                    <h5>Company Profile</h5>
-                    <p>
-                        Nomad is a software platform for starting and running internet businesses. Millions of
-                        businesses rely on Nomad's tools to accept payments, expand globally, and manage their business
-                        online. Our mission is to empower businesses worldwide.
-                    </p>
-                    <p><strong>Founded:</strong> July 31, 2011</p>
-                    <p><strong>Employees:</strong> 4000+</p>
-                    <p><strong>Location:</strong> 20 countries</p>
-                    <p><strong>Industry:</strong> Social & Non-Profit</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Tech Stack</h5>
-                    <div class="d-flex gap-2">
-                        <img src="https://via.placeholder.com/50" alt="HTML5" class="img-fluid">
-                        <img src="https://via.placeholder.com/50" alt="CSS3" class="img-fluid">
-                        <img src="https://via.placeholder.com/50" alt="JavaScript" class="img-fluid">
+        <div class="container">
+            <section class="profile-container mt-4">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h4 th:text="${company.compName}">Company Profile</h4>
+                        <p th:text="${company.about}">
+                            Nomad is a software platform for starting and running internet businesses.
+                            Millions
+                            of
+                            businesses rely on Nomad's tools to accept payments, expand globally, and manage
+                            their
+                            business
+                            online. Our mission is to empower businesses worldwide.
+                        </p>
+                        <p><strong>Address:</strong> <span th:text="${company.address.country}">Null</span>
+                        </p>
+                        <p><strong>Web URL:</strong> <span th:text="${company.webUrl}">Null</span></p>
+                        <p><strong>Phone:</strong> <span th:text="${company.phone}">Null</span></p>
+                        <p><strong>Email:</strong> <span th:text="${company.email}">Null</span></p>
                     </div>
-                    <a href="#" class="text-primary">View full tech stack →</a>
+                    <div class="col-md-4">
+                        <h5>Tech Stack</h5>
+                        <div class="d-flex gap-2">
+                            <img src="https://via.placeholder.com/50" alt="HTML5" class="img-fluid">
+                            <img src="https://via.placeholder.com/50" alt="CSS3" class="img-fluid">
+                            <img src="https://via.placeholder.com/50" alt="JavaScript" class="img-fluid">
+                        </div>
+                        <a href="#" class="text-primary">View full tech stack →</a>
+                    </div>
                 </div>
-            </div>
-        </section>
-
-        <!-- Office Photos Section -->
-        <section class="container py-5 border-bottom">
-            <h5>Working at Nomad</h5>
-            <div class="d-flex gap-3">
-                <img src="https://via.placeholder.com/200x150" alt="Office 1" class="img-fluid rounded">
-                <img src="https://via.placeholder.com/200x150" alt="Office 2" class="img-fluid rounded">
-                <img src="https://via.placeholder.com/200x150" alt="Office 3" class="img-fluid rounded">
-            </div>
-        </section>
-
-        <!-- Team Section -->
-        <section class="container py-5 border-bottom">
-            <h5>Team</h5>
-            <div class="row g-3">
-                <div class="col-md-4 text-center">
-                    <img src="https://via.placeholder.com/100" alt="Member" class="img-fluid rounded-circle mb-2">
-                    <h6>Célestin Gardinier</h6>
-                    <p>CEO & Co-Founder</p>
+            </section>
+            <section class="profile-container mt-4">
+                <h4>Open Positions</h4>
+                <div th:each="job, iterStat : ${company.jobs}" th:if="${iterStat.index < 4}" class="list-group mt-2">
+                    <a href="#" class="list-group-item list-group-item-action">
+                        <h6 class="mb-1" th:text="${job.jobName}">Social Media Assistant</h6>
+                        <small th:text="${job.jobDesc}">Nomad • Paris, France • Full-Time</small>
+                    </a>
                 </div>
-                <div class="col-md-4 text-center">
-                    <img src="https://via.placeholder.com/100" alt="Member" class="img-fluid rounded-circle mb-2">
-                    <h6>Reynaud Colbert</h6>
-                    <p>Co-Founder</p>
-                </div>
-                <div class="col-md-4 text-center">
-                    <img src="https://via.placeholder.com/100" alt="Member" class="img-fluid rounded-circle mb-2">
-                    <h6>Arienne Lyon</h6>
-                    <p>Managing Director</p>
-                </div>
-            </div>
-            <a href="#" class="text-primary mt-3 d-block">View all core teams →</a>
-        </section>
-
-        <!-- Benefits Section -->
-        <section class="container py-5 border-bottom">
-            <h5>Benefit</h5>
-            <div class="row text-center">
-                <div class="col-md-4">
-                    <h6>Full Healthcare</h6>
-                    <p>We provide comprehensive healthcare plans to ensure our team stays healthy and happy.</p>
-                </div>
-                <div class="col-md-4">
-                    <h6>Unlimited Vacation</h6>
-                    <p>Take as much time off as you need to recharge and stay productive.</p>
-                </div>
-                <div class="col-md-4">
-                    <h6>Remote Working</h6>
-                    <p>Work from anywhere in the world while staying connected with the team.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Open Positions Section -->
-        <section class="container py-5 border-bottom">
-            <h5>Open Positions</h5>
-            <div class="list-group">
-                <a href="#" class="list-group-item list-group-item-action">
-                    <h6 class="mb-1">Social Media Assistant</h6>
-                    <small>Nomad • Paris, France • Full-Time</small>
-                </a>
-                <a href="#" class="list-group-item list-group-item-action">
-                    <h6 class="mb-1">Brand Designer</h6>
-                    <small>Nomad • Remote • Full-Time</small>
-                </a>
-            </div>
-            <a href="#" class="text-primary mt-3 d-block">Show all jobs →</a>
-        </section>
+                <a href="/companies/job-management" class="text-primary mt-3 d-block">Show all jobs →</a>
+            </section>
+        </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     </div>
-</div>
 </div>
 
 <!-- Bootstrap JS and dependencies -->
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </body>
+<!-- Modal for Profile -->
+<div class="modal fade" id="companyModal" tabindex="-1" aria-labelledby="companyModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="companyModalLabel">Edit Profile</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form action="/companies/edit-profile">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" placeholder="Name" name="name"
+                               th:value="${company.compName}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="about">About company:</label>
+                        <input type="text" class="form-control" id="about" placeholder="Date of birth" name="about"
+                               th:value="${company.about}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="webUrl">Web Url:</label>
+                        <input type="text" class="form-control" id="webUrl" placeholder="Date of birth" name="webUrl"
+                               th:value="${company.webUrl}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Email" name="email"
+                               th:value="${company.email}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number:</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Phone Number" name="phone"
+                               th:value="${company.phone}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">City:</label>
+                        <input type="text" class="form-control" id="city" placeholder="City" name="city"
+                               th:value="${company.address.city}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country Code:</label>
+                        <input type="text" class="form-control" id="country" placeholder="Country Code" name="country"
+                               th:value="${company.address.country}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="number">Number: </label>
+                        <input type="text" class="form-control" id="number" placeholder="Number" name="number"
+                               th:value="${company.address.number}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="street">Street: </label>
+                        <input type="text" class="form-control" id="street" placeholder="Street" name="street"
+                               th:value="${company.address.street}" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="zipcode">Zipcode: </label>
+                        <input type="text" class="form-control" id="zipcode" placeholder="Zip code" name="zipcode"
+                               th:value="${company.address.zipcode}" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary form-control">Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
 </html>

@@ -11,6 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -33,6 +34,11 @@ public class CandidateServiceImpl implements CandidateService {
     @Override
     public Optional<Candidate> findCandidateByEmail(String email) {
         return candidateRepository.findByEmail(email);
+    }
+
+    @Override
+    public List<Candidate> findALl() {
+        return candidateRepository.findAll();
     }
 
     @Override

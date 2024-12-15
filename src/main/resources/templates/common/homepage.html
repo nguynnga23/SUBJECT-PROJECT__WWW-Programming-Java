@@ -23,7 +23,7 @@
 <!-- Hero Section -->
 <section class="hero bg-primary text-white text-center py-5">
     <div class="container">
-        <h1 class="display-4">Find Your Dream Job</h1>
+        <h1 class="display-4"><strong>Find Your Dream Job</strong></h1>
         <p class="lead">Connecting talented candidates with top companies. Whether you're looking for your next job or
             hiring the best talent, we're here to help.</p>
         <a href="#jobs" class="btn btn-light btn-lg">Browse Jobs</a>
@@ -51,29 +51,13 @@
 <section id="jobs" class="container py-4 profile-container mt-4 ">
     <h3 class="text-center mb-2">Featured Jobs</h3>
     <div class="row">
-        <div class="col-md-4">
+        <div th:each="job, iterStat : ${jobs}" th:if="${iterStat.index < 6}" class="col-md-4 mt-2">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Software Engineer</h5>
-                    <p class="card-text">Skills: Java, Spring Boot, SQL</p>
-                    <a href="#" class="btn btn-primary">Apply Now</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Data Scientist</h5>
-                    <p class="card-text">Skills: Python, Data Analysis</p>
-                    <a href="#" class="btn btn-primary">Apply Now</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">UX/UI Designer</h5>
-                    <p class="card-text">Skills: Figma, Adobe XD</p>
+                    <h5 th:text="${job.jobName}" class="card-title">Software Engineer</h5>
+                    <p th:text="${job.company.compName}" class="card-title">Software Engineer</p>
+                    <p th:each="skillJob:${job.jobSkills}" class="card-text">Skills: <span
+                            th:text="${skillJob.skill.skillName}">Java, Spring Boot, SQL</span>, </p>
                     <a href="#" class="btn btn-primary">Apply Now</a>
                 </div>
             </div>
@@ -85,29 +69,13 @@
 <section id="candidates" class="container py-4 profile-container mt-4 mb-4">
     <h3 class="text-center mb-2">Featured Candidates</h3>
     <div class="row">
-        <div class="col-md-4">
+        <div th:each="candidate, iterStat : ${candidates}" th:if="${iterStat.index < 6}" class="col-md-4 mt-2">
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">John Doe</h5>
-                    <p class="card-text">Skills: Java, Spring Boot, SQL</p>
-                    <a href="#" class="btn btn-primary">View Profile</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Jane Smith</h5>
-                    <p class="card-text">Skills: Python, Data Analysis</p>
-                    <a href="#" class="btn btn-primary">View Profile</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Mark Johnson</h5>
-                    <p class="card-text">Skills: Figma, Adobe XD</p>
+                    <h5 th:text="${candidate.fullName}" class="card-title">John Doe</h5>
+                    <p th:text="${candidate.email}" class="card-title">John Doe</p>
+                    <p th:each="skillCandidate:${candidate.candidateSkills}" class="card-text">Skills: <span
+                            th:text="${skillCandidate.skill.skillName}">Java, Spring Boot, SQL</span>, </p>
                     <a href="#" class="btn btn-primary">View Profile</a>
                 </div>
             </div>

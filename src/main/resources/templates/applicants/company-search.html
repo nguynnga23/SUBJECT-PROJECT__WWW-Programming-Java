@@ -11,12 +11,12 @@
     <style>
         .wrapper {
             display: flex;
-            min-height: 100vh;
+            height: 100vh;
         }
 
         .sidebar {
             width: 250px;
-            height: 100vh;
+            height: 100%;
             position: fixed;
         }
 
@@ -26,6 +26,7 @@
             background-color: #f9f9fc;
             margin-left: 250px;
             width: calc(100% - 250px);
+            overflow-y: auto;
         }
 
         /* Custom styles for a modern look */
@@ -36,7 +37,7 @@
         }
 
         .card-custom {
-            height: 180px !important;
+            height: 200px !important;
             display: flex;
             justify-content: space-between;
         }
@@ -265,15 +266,11 @@
                                 </div>
                             </div>
                             <div class="row g-4">
-                                <div th:each="company, isStat: ${companyPage.content}"
-                                     th:style="${isStat.odd}? 'font-weight: bold;'"
-                                     th:alt-title="${isStat.even}? 'even' : 'odd'" class="col-md-4">
+                                <div th:each="company, isStat: ${companyPage.content}" class="col-md-4">
                                     <div class="card p-3 card-custom">
                                         <h5 th:text="${company.compName}">Stripe</h5>
-                                        <p th:text="${company.about}" class="text-muted">Stripe is a software platform
-                                            for
-                                            starting and running internet
-                                            businesses...</p>
+                                        <p th:text="${company.webUrl}" class="text-muted"></p>
+
                                         <div>
                                             <a th:href="@{/candidates/company-detail(id=${company.id})}"
                                                class="p-2 badge btn-primary">

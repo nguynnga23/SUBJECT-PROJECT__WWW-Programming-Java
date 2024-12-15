@@ -1,19 +1,35 @@
-
+## Introduction
+- **Full Name :** Nguyễn Thị Nga
+- **Student ID :** 21130791
 
 ### Front End
-- [Thymeleaf](https://www.thymeleaf.org/) 🍃
-- [Bootstrap](https://getbootstrap.com/) 🅱️
-- [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML) 🌐
-- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) 🎨
-- [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) 🚀
+- HTML5/CSS3: For building the core user interface.
+- Thymeleaf: Enables dynamic server-side UI rendering.
+- JavaScript: Handles client-side interaction logic.
+- Bootstrap: A CSS framework for responsive and modern UI design.
 
 ### Back End
-- [Java](https://www.java.com/) ☕
-- [Spring](https://spring.io/) 🌱
-- [JUnit](https://junit.org/) 🧪
-
-### Database
-- [MariaDB](https://mariadb.org/) 🗃️
+#### 1. Frameworks and Libraries
+##### Spring Boot:
+- spring-boot-starter-thymeleaf: Integration of Thymeleaf for server-side UI rendering.
+- spring-boot-starter-web: For building web applications and REST APIs.
+- spring-boot-starter-data-jpa: Supports database operations using JPA/Hibernate.
+- spring-boot-starter-security: Handles security features for the application.
+##### Thymeleaf Extras:
+- thymeleaf-extras-springsecurity6: Adds security features to Thymeleaf templates.
+#### 2. Supporting Libraries
+- Hibernate Core: Version 6.6.1.Final for ORM (Object Relational Mapping).
+- nv-i18n:1.29: Provides utilities for handling internationalization (i18n).
+- datafaker:2.4.1: Generates fake data for testing purposes.
+- mahout-math:0.13.0: A library for high-performance mathematical computations.
+#### 3. Development Tools
+- Spring Boot DevTools: Speeds up development with auto-reload features.
+- Lombok: Reduces boilerplate code through annotations (compileOnly and annotationProcessor).
+#### 4. Database
+- MariaDB JDBC Driver: Connects to the MariaDB database (mariadb-java-client).
+#### 5. Testing
+- spring-boot-starter-test: A testing framework for Spring Boot applications.
+- junit-platform-launcher: Facilitates running test cases.
 
 ### Project Details 🚀
 
@@ -29,18 +45,31 @@ This collaborative effort and the use of a comprehensive set of tools allowed us
 The project consists of two main components: the **Candidate side** and the **Company side**.
 
 ### Client Side 🌐
-- View lists of vacancies 📋
-- Filter vacancies by position, date, and more 🔍
-- Submit CVs through the respective vacancy 📄
+- View lists of candidates and jobs 📋
+- Filter candidates
+- Filter jobs
+- Register and Login
 ### Candidate Side 👨‍💼👩‍💼
-
+#### 1. Browse Companies
+- Explore a list of companies with detailed profiles, including: Company name, description, size, and location.
+- Job openings currently available.
+- Filter companies by industry, size, and location.
+#### 2. Find Job
+- Search for job opportunities using keywords, job titles, or company names.
+- Filter and sort options based on: Location, salary, job type (full-time, part-time, remote).
+#### 3. View and Edit Profile
+Manage personal details, including: Name, contact information, and professional headline.
+- Upload or update resumes and cover letters.
+- Add and update skills, certifications, and work experience.
+- View profile completion percentage and receive tips to enhance visibility.
+#### 4. View Feature: Job Match with Skills
+- Access a tailored list of jobs that match your skills.
 ### Company Side 👨‍💼👩‍💼
-
-All roles have access to an overall chart 📈 and can review replied emails 📧, except for Department Heads and Interviewers.
-
+- Find Candidate : Search candidates based on skills, experience, and position.
+- View and Edit Profile : View and update your company profile and job postings.
+- Post a Job : Create and publish new job listings with detailed descriptions.
 
 # Project Screenshots
-
 Here are some screenshots from the project
 
 ## Client Side
@@ -53,25 +82,6 @@ Here are some screenshots from the project
 ![image](https://github.com/user-attachments/assets/e915b777-8c2b-451b-a54e-ffacc2a9d2ef)
 ### Login Page
 ![image](https://github.com/user-attachments/assets/b7289836-5dc8-41c6-b74f-e7fe88b65dd7)
-### Home Page 🏠
-![Home Page](/docs/client/home_page.jpg)
-Explore our Home Page for a welcoming and informative experience. Discover everything you need at a glance.
-
-### All Jobs List 👥
-![All Jobs List](/docs/client/all_jobs_list.jpg)
-
-Browse through the comprehensive All Jobs List to find the perfect opportunity for your career growth.
-
-### Vacancy Detail 📄
-![Vacancy Detail](/docs/client/vacany_detail.jpg)
-
-Dive into the details of each vacancy with Vacancy Detail. Get a closer look at job descriptions and requirements.
-
-### Job Apply Form 📝
-![Job Apply Form](/docs/client/job_apply_modalbox.jpg)
-
-Ready to take the next step in your career? Use the Job Apply Form to submit your application seamlessly.
-
 
 ## Candidate Side 👨‍💼👩‍💼
 ### Home Page
@@ -79,7 +89,6 @@ Ready to take the next step in your career? Use the Job Apply Form to submit you
 
 ### Dashboard Overview 📊
 ![image](https://github.com/user-attachments/assets/3a2abf69-2dc0-40d4-ab68-dd29bfa77159)
-
 Get a quick snapshot of your system with our Dashboard Overview. Track essential metrics and key performance indicators at a glance.
 
 ### Find Jobs 📈
@@ -104,15 +113,18 @@ Manage your talent pool efficiently with the All Candidate List. Access and orga
 ![image](https://github.com/user-attachments/assets/dd1f731f-5058-4a53-8ce0-6da4055018d8)
 
 ## Company Side
+### Home Page
+![image](https://github.com/user-attachments/assets/0557120b-3438-4472-85be-b8ae402ff681)
 ### Company Profile
 ![image](https://github.com/user-attachments/assets/4c8a0745-cc9c-4506-84b3-5147b5451603)
 #### Edit company profile
 ![image](https://github.com/user-attachments/assets/bdc8554e-7a27-4ef4-93f4-7bca332cef29)
 
 ### Job Listing
+![image](https://github.com/user-attachments/assets/8a358c43-86d7-48e8-bcf0-547e69f84814)
+
 #### Post a Job
 ![image](https://github.com/user-attachments/assets/a6eb4194-8c4f-460e-a5b4-cf04d0cbfe81)
-
 
 ### Wrapping Up 🌟
 

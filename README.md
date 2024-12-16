@@ -81,7 +81,7 @@ Here are some screenshots from the project
 ![image](https://github.com/user-attachments/assets/0401a1fc-df00-45db-81b3-f7fa2cc59535)
 ![image](https://github.com/user-attachments/assets/e915b777-8c2b-451b-a54e-ffacc2a9d2ef)
 ### Login Page
-![image](https://github.com/user-attachments/assets/b7289836-5dc8-41c6-b74f-e7fe88b65dd7)
+![image](https://github.com/user-attachments/assets/c2ea047c-5dcf-4a69-948e-c8f1bdff94f8)
 
 ## Candidate Side 👨‍💼👩‍💼
 ### Home Page
